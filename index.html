@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Булки дня — Капибулка</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #fff5e3;
+      --green: #193c2d;
+      --coral: #ff9a80;
+      --coral-hover: #ffb29d;
+      --rule: #c8bfaa;
+      --display: Georgia, "Times New Roman", serif;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      color: var(--green);
+      background: radial-gradient(ellipse at 10% 0%, #ffe8cb, transparent 38rem), var(--cream);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 75rem;
+      margin-inline: auto;
+      padding-inline: clamp(1.125rem, 5vw, 4.5rem);
+    }
+
+    .masthead {
+      padding-block: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+      font: bold 1.5rem/1.2 var(--display);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      align-items: center;
+      gap: clamp(1.75rem, 5vw, 4.5rem);
+      padding-block: clamp(2rem, 6vw, 4.75rem);
+    }
+
+    h1, h2, p {
+      margin: 0;
+    }
+
+    h1 {
+      font: bold clamp(3.75rem, 8.75vw, 8rem)/0.9 var(--display);
+      letter-spacing: -0.055em;
+    }
+
+    .promise {
+      margin-top: clamp(0.75rem, 2vw, 1.5rem);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+
+    .offer {
+      padding: clamp(1.25rem, 4vw, 2.75rem);
+      border-radius: 1.25rem clamp(3rem, 9vw, 7rem) 1.25rem 1.25rem;
+      color: var(--cream);
+      background: radial-gradient(ellipse at top right, #315642, var(--green) 72%);
+      box-shadow: 0 0.75rem 1.75rem rgb(25 60 45 / 14%);
+    }
+
+    .offer-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    h2 {
+      font: bold clamp(1.625rem, 3.8vw, 3.25rem)/1.08 var(--display);
+      letter-spacing: -0.035em;
+    }
+
+    .cinnamon-swirl {
+      position: relative;
+      display: grid;
+      flex: none;
+      place-items: center;
+      width: clamp(3.5rem, 12vw, 8.5rem);
+      aspect-ratio: 1;
+      border: clamp(3px, 0.5vw, 7px) solid var(--coral);
+      border-right-color: transparent;
+      border-radius: 52% 48% 46% 54%;
+      transform: rotate(-33deg);
+    }
+
+    .cinnamon-swirl::before,
+    .cinnamon-swirl::after {
+      position: absolute;
+      width: 75%;
+      aspect-ratio: 1;
+      border: inherit;
+      border-radius: 53% 47% 52% 48%;
+      transform: rotate(110deg);
+      content: "";
+    }
+
+    .cinnamon-swirl::after {
+      width: 44%;
+      transform: rotate(215deg);
+    }
+
+    .description {
+      max-width: 31ch;
+      margin-top: 1rem;
+      font-size: clamp(1rem, 1.6vw, 1.125rem);
+    }
+
+    button {
+      max-width: 100%;
+      min-height: 3rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.25rem;
+      border: 0;
+      border-radius: 2rem;
+      color: var(--green);
+      background: var(--coral);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--coral-hover);
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 4px;
+    }
+
+    .status:not(:empty) {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgb(255 245 227 / 35%);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem 2rem;
+      margin: 0;
+      padding: 1.25rem 0 1.25rem 1.75rem;
+      border-block: 1px solid var(--rule);
+    }
+
+    .steps li {
+      padding-inline-start: 0.25rem;
+    }
+
+    .steps li::marker {
+      font: bold 1.25rem var(--display);
+    }
+
+    footer {
+      padding-block: 1.25rem 2rem;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 46rem) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      h1 br {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 10vw, 4.5rem);
+        line-height: 0.95;
+      }
+    }
+
+    @media (max-width: 33rem) {
+      .offer-heading {
+        gap: 0.625rem;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 0.625rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">Капибулка</header>
+
+    <main>
+      <section class="hero" aria-labelledby="title">
+        <div>
+          <h1 id="title">Булки <br>дня</h1>
+          <p class="promise">Каждый день — свежая булка</p>
+        </div>
+
+        <article class="offer" aria-labelledby="bun-title">
+          <div class="offer-heading">
+            <h2 id="bun-title">Коричная <br>капибара</h2>
+            <span class="cinnamon-swirl" aria-hidden="true"></span>
+          </div>
+          <p class="description">Мягкая булочка с корицей и румяной сахарной корочкой.</p>
+          <button type="button" id="choose-bun">Выбрать булку дня</button>
+          <button type="button" id="reset-bun" hidden>Сбросить выбор</button>
+          <p class="status" id="selection-status" role="status"></p>
+        </article>
+      </section>
+
+      <ol class="steps" aria-label="Как выбрать булку дня">
+        <li>Прочитайте о булке дня</li>
+        <li>Выберите булку</li>
+        <li>Увидите подтверждение</li>
+      </ol>
+    </main>
+
+    <footer>Учебный проект. Выбор булки не оформляет заказ.</footer>
+  </div>
+
+  <script>
+    const chooseBun = document.querySelector('#choose-bun');
+    const resetBun = document.querySelector('#reset-bun');
+    const selectionStatus = document.querySelector('#selection-status');
+
+    chooseBun.addEventListener('click', () => {
+      selectionStatus.textContent = 'Вы выбрали „Коричную капибару“. Данные никуда не отправляются.';
+      chooseBun.hidden = true;
+      resetBun.hidden = false;
+      resetBun.focus();
+    });
+
+    resetBun.addEventListener('click', () => {
+      selectionStatus.textContent = 'Выбор сброшен.';
+      resetBun.hidden = true;
+      chooseBun.hidden = false;
+      chooseBun.focus();
+    });
+  </script>
+</body>
+</html>
