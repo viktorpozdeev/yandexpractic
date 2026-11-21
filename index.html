@@ -140,10 +140,26 @@
       outline-offset: 4px;
     }
 
-    .status:not(:empty) {
+    .status-area {
+      display: grid;
       margin-top: 1.25rem;
+      overflow-wrap: anywhere;
+    }
+
+    .status-area::before,
+    .status {
+      grid-area: 1 / 1;
       padding-top: 1rem;
-      border-top: 1px solid rgb(255 245 227 / 35%);
+      border-top: 1px solid transparent;
+    }
+
+    .status-area::before {
+      content: attr(data-confirmation);
+      visibility: hidden;
+    }
+
+    .status:not(:empty) {
+      border-top-color: rgb(255 245 227 / 35%);
     }
 
     .steps {
@@ -218,7 +234,9 @@
           <p class="description">Мягкая булочка с корицей и румяной сахарной корочкой.</p>
           <button type="button" id="choose-bun">Выбрать булку дня</button>
           <button type="button" id="reset-bun" hidden>Сбросить выбор</button>
-          <p class="status" id="selection-status" role="status"></p>
+          <div class="status-area" data-confirmation="Вы выбрали „Коричную капибару“. Данные никуда не отправляются.">
+            <p class="status" id="selection-status" role="status"></p>
+          </div>
         </article>
       </section>
 
@@ -236,19 +254,20 @@
     const chooseBun = document.querySelector('#choose-bun');
     const resetBun = document.querySelector('#reset-bun');
     const selectionStatus = document.querySelector('#selection-status');
+    const confirmation = selectionStatus.parentElement.dataset.confirmation;
 
     chooseBun.addEventListener('click', () => {
-      selectionStatus.textContent = 'Вы выбрали „Коричную капибару“. Данные никуда не отправляются.';
+      selectionStatus.textContent = confirmation;
       chooseBun.hidden = true;
       resetBun.hidden = false;
-      resetBun.focus();
+      resetBun.focus({ preventScroll: true });
     });
 
     resetBun.addEventListener('click', () => {
       selectionStatus.textContent = 'Выбор сброшен.';
       resetBun.hidden = true;
       chooseBun.hidden = false;
-      chooseBun.focus();
+      chooseBun.focus({ preventScroll: true });
     });
   </script>
 </body>
